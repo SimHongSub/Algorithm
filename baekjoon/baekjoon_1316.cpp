@@ -17,10 +17,9 @@ int main(){
 	for (i = 0; i < numOfWord; i++){
 		cin >> word;
 
-		check = 0;
-
 		for (j = 0; j < word.size(); j++){
-			for (k = 0; k < word.size(); k++){
+			check = 0;
+			for (k = j; k < word.size(); k++){
 				if (word.at(j) != word.at(k)){
 					check = 1;
 				}
