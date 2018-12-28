@@ -3,7 +3,6 @@
 
 using namespace std;
 
-//c=, c-, dz=, d-, lj, nj, s=, z=
 int main(){
 
 	string input;
@@ -23,15 +22,6 @@ int main(){
 				input.replace(input.find(alpha[i]), 2, "00");
 			}
 		}
-		/*if (input.find(alpha[i]) != string::npos){
-			result++;
-			if (i == 2){
-				input.replace(input.find(alpha[i]), 3, "000");
-			}
-			else{
-				input.replace(input.find(alpha[i]), 2, "00");
-			}
-		}*/
 	}
 
 	for (i = 0; i < input.size(); i++){
