@@ -30,21 +30,6 @@ int main(){
 		else{
 			printf("%d\n", result);
 		}
-		
-		/*while (1){
-			if (k*k >= distance){
-				if (temp < (k*k) - distance){
-					printf("%d\n", result - 1);
-				}
-				else{
-					printf("%d\n", result);
-				}
-				break;
-			}
-			k++;
-			temp = ((k*k) - ((k - 1)*(k - 1))) / 2;
-			result += 2;
-		}*/
 	}
 
 	return 0;
