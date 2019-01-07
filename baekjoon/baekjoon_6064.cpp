@@ -2,48 +2,51 @@
 
 using namespace std;
 
+int lcm(int m, int n);
+
 int main(){
 	int T;
-	int M, N, inputX, inputY;
-	int result;
-	int x, y;
+	int M, N, x, y, lcmNum;
 
 	cin >> T;
 
 	for (int i = 0; i < T; i++){
-		cin >> M >> N >> inputX >> inputY;
-		x = 1;
-		y = 1;
-		result = 1;
+		cin >> M >> N >> x >> y;
 
-		while (1){
-			if (x == inputX && y == inputY){
-				cout << result << endl;
-				break;
+		lcmNum = lcm(M, N);
+
+		while (x != y && x <= lcmNum){
+			if (x < y){
+				x += M;
 			}
 			else{
-				if (x < M && y < N){
-					x += 1;
-					y += 1;
-				}
-				else if (x >= M && y < N){
-					x = 1;
-					y += 1;
-				}
-				else if (x < M && y >= N){
-					x += 1;
-					y = 1;
-				}
-				else{
-					result = -1;
-					cout << result << endl;
-					break;
-				}
-
-				result++;
+				y += N;
 			}
+
+		}
+
+		if (x != y){
+			cout << -1 << endl;
+		}
+		else{
+			cout << x << endl;
 		}
 	}
 
 	return 0;
+}
+
+int lcm(int m, int n){
+	
+	int tmp, a, b;
+
+	a = m, b = n;
+
+	while (b){
+		tmp = a;
+		a = b;
+		b = tmp%b;
+	}
+
+	return (m*n) / a;
 }
