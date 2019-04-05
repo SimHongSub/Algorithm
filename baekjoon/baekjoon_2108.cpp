@@ -4,59 +4,79 @@
 
 using namespace std;
 
+struct Input{
+	int mode = 0;
+	int num;
+};
+
+bool numCompare(Input &input1, Input &input2);
+bool modeCompare(Input &input1, Input &input2);
+
 int main(){
 
-	int N, input;
-	int arithmetic = 0, range = 0;
-	float result;
-	int modeN[4001] = { 0, }, modeP[4001] = {0,}, modeNe=0, modeNIndex =0, modePo=0, modePIndex=0, mode;
-
+	int N, range;
+	float average = 0;
+	
 	cin >> N;
 
-	int* median = new int[N];
-	
+	Input *input = new Input[N];
+
 	for (int i = 0; i < N; i++){
-		cin >> input;
+		cin >> input[i].num;
 
-		arithmetic += input;
-		median[i] = input;
+		for (int j = 0; j < i; j++){
+			if (input[i].num == input[j].num){
+				input[j].mode++;
+				break;
+			}
+		}
 
-		if (input < 0){
-			modeN[abs(input)]++;
-		}
-		else{
-			modeP[input]++;
-		}
+		input[i].mode++;
+
+		average += input[i].num;
 	}
 
-	for (int i = 1; i <= 4000; i++){
-		if (modeNe < modeN[i]){
-			modeNe = modeN[i];
-			modeNIndex = i;
-		}
+	sort(input, input + N, numCompare);
 
-		if (modePo < modeP[i]){
-			modePo = modeP[i];
-			modePIndex = i;
-		}
-	}
+	range = input[N - 1].num - input[0].num;
 
-	if (modeNe > modePo){
-		mode = -modeNIndex;
+	cout << floor((average / N) + 0.5) << endl;
+	cout << input[N / 2].num << endl;
+
+	sort(input, input + N, modeCompare);
+
+	if (N == 1){
+		cout << input[N - 1].num << endl;
 	}
 	else{
-		mode = modePIndex;
+		cout << input[N - 2].num << endl;
 	}
-
-	sort(median, median + N);
-
-	result = arithmetic / N;
-	range = median[N - 1] - median[0];
-
-	printf("%d\n", ceil(result));
-	printf("%d\n", median[N/2]);
-	printf("%d\n", mode);
-	printf("%d\n", range);
-
+	
+	cout << range << endl;
+	
 	return 0;
+}
+
+bool numCompare(Input &input1, Input &input2){
+
+	if (input1.num < input2.num){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+bool modeCompare(Input &input1, Input &input2){
+
+	if (input1.mode < input2.mode){
+		return true;
+	}
+	else{
+		if (input1.mode == input2.mode && input1.num > input2.num){
+			return true;
+		}
+
+		return false;
+	}
 }
