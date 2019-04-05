@@ -14,7 +14,7 @@ bool modeCompare(Input &input1, Input &input2);
 
 int main(){
 
-	int N, range;
+	int N, range, idx;
 	float average = 0;
 	
 	cin >> N;
@@ -46,12 +46,24 @@ int main(){
 	sort(input, input + N, modeCompare);
 
 	if (N == 1){
-		cout << input[N - 1].num << endl;
+		cout << input[0].num << endl;
 	}
 	else{
-		cout << input[N - 2].num << endl;
+		for (int i = N; i > 0; i--){
+			if (input[i - 1].mode != input[i - 2].mode){
+				idx = i;
+				break;
+			}
+		}
+
+		if (idx == N){
+			cout << input[idx - 1].num << endl;
+		}
+		else{
+			cout << input[idx].num << endl;
+		}
 	}
-	
+
 	cout << range << endl;
 	
 	return 0;
@@ -73,7 +85,7 @@ bool modeCompare(Input &input1, Input &input2){
 		return true;
 	}
 	else{
-		if (input1.mode == input2.mode && input1.num > input2.num){
+		if (input1.mode == input2.mode && input1.num < input2.num){
 			return true;
 		}
 
