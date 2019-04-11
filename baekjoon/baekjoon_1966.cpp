@@ -8,6 +8,7 @@ struct Print{
 	int num;
 	int importance;
 };
+
 int main(){
 
 	int testCase;
