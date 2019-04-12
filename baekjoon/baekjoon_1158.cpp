@@ -28,10 +28,12 @@ int main(){
 		else{
 			while (1){
 				index = index - v.size();
+
 				if (index < v.size()){
 					break;
 				}
 			}
+
 			result[i] = v[index];
 			v.erase(v.begin() + index);
 			index += K - 1;
