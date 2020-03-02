@@ -7,45 +7,41 @@ int gcd(int a, int b);
 int main(){
 
 	int N;
-	int first_Loacation, first_End_Distance;
-	int previous_Lcation, present_Location;
-	int gcd_Value, least_Count, all_Count;
+	int first_loacation, first_end_distance;
+	int previous_location, present_location;
+	int gcd_value, least_count, all_count;
 	int* distances;
 
 	scanf("%d", &N);
 	
-	scanf("%d", &previous_Lcation);
-	first_Loacation = previous_Lcation;
+	scanf("%d", &previous_location);
+	first_loacation = previous_location;
 
 	distances = new int[N-1];
 
 	for (int i = 0; i < N-1; i++){
-		scanf("%d", &present_Location);
+		scanf("%d", &present_location);
 
-		distances[i] = present_Location - previous_Lcation;
+		distances[i] = present_location - previous_location;
 
-		previous_Lcation = present_Location;
+		previous_location = present_location;
 
 		if (i == N - 2){
-			first_End_Distance = present_Location - first_Loacation + 1;
+			first_end_distance = present_location - first_loacation;
 		}
 	}
 
-	gcd_Value = gcd(distances[0], distances[1]);
+	gcd_value = gcd(distances[0], distances[1]);
 
 	for (int i = 2; i < N - 1; i++){
-		gcd_Value = gcd(gcd_Value, distances[i]);
+		gcd_value = gcd(gcd_value, distances[i]);
 	}
 
-	if (first_End_Distance % gcd_Value == 0){
-		all_Count = first_End_Distance / gcd_Value;
-	}else{
-		all_Count = (first_End_Distance / gcd_Value) + 1;
-	}
+	all_count = (first_end_distance / gcd_value) + 1;
 
-	least_Count = all_Count - N;
+	least_count = all_count - N;
 
-	printf("%d\n", least_Count);
+	printf("%d\n", least_count);
 
 	delete[] distances;
 
