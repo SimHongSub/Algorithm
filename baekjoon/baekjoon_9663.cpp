@@ -8,7 +8,17 @@ void dfs(int start, vector<int> graph[], bool check[]);
 
 int main(){
 
+	int N;
+	int board[15][15];
+	int num_queen = 1;
 
+	scanf("%d", &N);
+
+	for (int i = 0; i < N; i++){
+		for (int j = 0; j < N; j++){
+			
+		}
+	}
 
 	return 0;
 }
