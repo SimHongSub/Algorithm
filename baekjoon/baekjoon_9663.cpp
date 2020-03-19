@@ -4,36 +4,47 @@
 
 using namespace std;
 
-void dfs(int start, vector<int> graph[], bool check[]);
+int N;
+int col[15];
+int result = 0;
+
+void dfs(int start);
 
 int main(){
 
-	int N;
-	int board[15][15];
-	int num_queen = 1;
-
 	scanf("%d", &N);
 
-	for (int i = 0; i < N; i++){
-		for (int j = 0; j < N; j++){
-			
-		}
-	}
+	dfs(0);
+
+	printf("%d", result);
 
 	return 0;
 }
 
-void dfs(int start, vector<int> graph[], bool check[]){
-	stack<int> s;
-	s.push(start);
-	check[start] = true;
-	
-	while (!s.empty()){
-		int current_node = s.top();
-		s.pop();
+void dfs(int start){
 
-		for (int i = 0; i < graph[current_node].size(); i++){
-			int next_node = graph[current_node][i];
+	int check = 0;
+
+	if (start == N){
+		result++;
+	}
+	else{
+		for (int i = 0; i < N; i++){
+			col[start] = i;
+
+			for (int j = 0; j < start; j++){
+				if (col[j] == col[start] || abs(col[start] - col[j]) == (start - j)){
+					check = 1;
+					break;
+				}
+			}
+
+			if (check == 0){
+				dfs(start + 1);
+			}
+			else{
+				check = 0;
+			}
 		}
 	}
 }
