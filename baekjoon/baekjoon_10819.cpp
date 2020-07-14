@@ -17,6 +17,8 @@ int main(){
 		v.push_back(input);
 	}
 
+	sort(v.begin(), v.end());
+
 	do{
 		int temp = 0;
 
