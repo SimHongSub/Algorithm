@@ -377,4 +377,9 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 
-# End of https://www.gitignore.io/api/c++,visualstudio
+.vscode/*
+!.vscode/tasks.json
+
+baekjoon/*.out.dSYM
+baekjoon/*.vcxproj
+
