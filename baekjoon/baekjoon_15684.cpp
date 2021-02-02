@@ -78,7 +78,7 @@ void traver(int row, int column, int add_Edge_Count){
                 map[i][j+1] = 2;
 
                 if(j+2 < N){
-                    traver(i, j+2, add_Edge_Count + 1);
+                    traver(i, j+1, add_Edge_Count + 1);
                 }else{
                     traver(i+1, 1, add_Edge_Count + 1);
                 }
