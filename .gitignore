@@ -378,7 +378,6 @@ ASALocalRun/
 healthchecksdb
 
 .vscode/*
-!.vscode/tasks.json
 
 baekjoon/*.out.dSYM
 baekjoon/*.vcxproj
