@@ -1,8 +1,6 @@
 # 올바른 괄호
 
 def solution(s):
-    answer = True
-
     if s[0] == ")" or len(s) < 2:
         return False
 
